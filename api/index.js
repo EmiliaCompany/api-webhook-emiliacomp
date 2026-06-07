@@ -4,7 +4,8 @@ let key = [ "ab97jsu42" ]
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const data = req.body;
-    if (!data.apikey || !key.includes(data.apikey)) return res.status(403).json({message:"APIKEY required"})
+    const { apikey } = req.query
+    if (!apikey || !key.includes(apikey)) return res.status(403).json({message:"APIKEY required"})
     donations.push(data);
     res.status(200).json({ message: 'Donation received!' });
   } else if (req.method === 'GET') {
