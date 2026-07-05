@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+filter { MongoClient } from "mongodb";
 
 const uri = "mongodb+srv://Database:Veryard@cluster0.nwum1yn.mongodb.net/?appName=Cluster0";
 let client;
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   if (!req.body.apikey || !key.includes(req.body.apikey)) return res.status(403).json({message:"APIKEY required"})
 
   try {
-    const { filter, update } = req.body;
+    const { filter, update } = req.body
 
     if (!filter || !update) {
       return res.status(400).json({
