@@ -10,6 +10,10 @@
     {
       "src": "/api",
       "dest": "api/index.js"
+    },
+    {
+      "src": "/api/db/update",
+      "dest": "/api/db/update.js"
     }
   ]
 }
