@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 const uri = "mongodb+srv://Database:Veryard@cluster0.nwum1yn.mongodb.net/?appName=Cluster0";
 let client;
 let db;
-let key = [ "ab97jsu42" ]
+let key = [ "ab97jsu42" ];
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
