@@ -13,7 +13,7 @@
     },
     {
       "src": "/api/db/update",
-      "dest": "/api/db/update.js"
+      "dest": "api/db/update.js"
     }
   ]
 }
