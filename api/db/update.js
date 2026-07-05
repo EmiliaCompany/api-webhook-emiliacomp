@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb";
 const uri = "mongodb+srv://Database:Veryard@cluster0.nwum1yn.mongodb.net/?appName=Cluster0";
 let client;
 let db;
+let key = [ "ab97jsu42" ]
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -11,6 +12,7 @@ export default async function handler(req, res) {
       message: "Method not allowed. Use POST."
     });
   }
+  if (!req.body.apikey || !key.includes(req.body.apikey)) return res.status(403).json({message:"APIKEY required"})
 
   try {
     const { iId, update } = req.body;
