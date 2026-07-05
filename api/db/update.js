@@ -36,10 +36,15 @@ export default async function handler(req, res) {
       await client.connect();
       db = client.db("DB");
     }
+    const finalUpdate = { ...update }
 
+    if (!finalUpdate.$set) finalUpdate.$set = {}
+
+    finalUpdate.$set.updatedAt = Date.now()
+    finalUpdate.$set._fromAPI = true
     const result = await db.collection("user").updateOne(
       filter,
-      update,
+      finalUpdate, 
       { upsert: true }
     );
 
