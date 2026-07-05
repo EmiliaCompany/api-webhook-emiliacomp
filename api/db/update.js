@@ -15,12 +15,12 @@ export default async function handler(req, res) {
   if (!req.body.apikey || !key.includes(req.body.apikey)) return res.status(403).json({message:"APIKEY required"})
 
   try {
-    const { iId, update } = req.body;
+    const { filter, update } = req.body;
 
-    if (!iId || !update) {
+    if (!filter || !update) {
       return res.status(400).json({
         status: "error",
-        message: "Missing required fields: iId and update are required."
+        message: "Missing required fields: filter and update are required."
       });
     }
 
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
     }
 
     const result = await db.collection("user").updateOne(
-      { iId },
+      filter,
       update,
       { upsert: true }
     );
